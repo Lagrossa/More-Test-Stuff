@@ -59,6 +59,7 @@ public class bezierGenerator : MonoBehaviour
                 lineRender.positionCount = midPoints.Count;
                 lineRender.SetPosition(x, midPoints[x].transform.position);
             }
+            //estimateCurve(midPoints);
             //Debug.Log($"New Array size: {midPoints.Count}");
             return GenerateCurve(midPoints);
         }
@@ -67,17 +68,16 @@ public class bezierGenerator : MonoBehaviour
 
     void estimateCurve(List<GameObject> list)
     {
+        int y = 1;
         for (int x = 0; x < list.Count - 2; x++)
         {
-            for (float t = 0; t < 1; t += resolution)
+            for (float t = lerp; lerp < 1; lerp += resolution)
             {
-                for(int y = 1; x+y < list.Count-1; y++)
-                {
-                    Gizmos.DrawLine(Vector3.Lerp(list[x].transform.position,
+                Gizmos.DrawLine(Vector3.Lerp(list[x].transform.position,
                     list[x + y].transform.position, t),
                     Vector3.Lerp(list[x + y].transform.position,
-                    list[x + y+1].transform.position, t));
-                }
+                    list[x + y + 1].transform.position, t));
+
             }
         }
     }
