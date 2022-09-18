@@ -29,7 +29,6 @@ public class bezierGenerator : MonoBehaviour
     Vector3 GenerateCurve(List<GameObject> list)
     {
         List<GameObject> midPoints = new List<GameObject>();
-        estimateCurve(list);
         if (list.Count <= 1)
         {
             trueMid = list[0].transform.position;
@@ -50,8 +49,10 @@ public class bezierGenerator : MonoBehaviour
                 Vector3 dist = list[x + 1].transform.position - list[x].transform.position;
                 GameObject midPoint = new GameObject();
                 midPoint.transform.position = list[x].transform.position + dist * lerp;
+                estimateCurve(list);
                 Gizmos.color = Color.cyan;
                 //Gizmos.DrawLine(list[x].transform.position, list[x].transform.position+dist);
+                Gizmos.DrawLine(midPoint.transform.position, trueMid);
                 midPoints.Add(midPoint);
                 gOHolder.Add(midPoint);
                 midPoint.transform.SetParent(folder.transform);
@@ -71,13 +72,12 @@ public class bezierGenerator : MonoBehaviour
         int y = 1;
         for (int x = 0; x < list.Count - 2; x++)
         {
-            for (float t = lerp; lerp < 1; lerp += resolution)
+            for (float t = 0; t < 1; t += resolution)
             {
                 Gizmos.DrawLine(Vector3.Lerp(list[x].transform.position,
                     list[x + y].transform.position, t),
                     Vector3.Lerp(list[x + y].transform.position,
                     list[x + y + 1].transform.position, t));
-
             }
         }
     }
