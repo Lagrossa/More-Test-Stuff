@@ -13,6 +13,7 @@ public class bezierGenerator : MonoBehaviour
     public GameObject folder;
     List<GameObject> gOHolder = new List<GameObject>();
     public LineRenderer lineRender;
+    public int midPCount;
     [Range(.02f, 1f)]
     public float resolution = .05f;
     private void OnDrawGizmos()
@@ -29,6 +30,7 @@ public class bezierGenerator : MonoBehaviour
     Vector3 GenerateCurve(List<GameObject> list)
     {
         List<GameObject> midPoints = new List<GameObject>();
+        estimateCurve(list);
         if (list.Count <= 1)
         {
             trueMid = list[0].transform.position;
@@ -49,7 +51,6 @@ public class bezierGenerator : MonoBehaviour
                 Vector3 dist = list[x + 1].transform.position - list[x].transform.position;
                 GameObject midPoint = new GameObject();
                 midPoint.transform.position = list[x].transform.position + dist * lerp;
-                estimateCurve(list);
                 Gizmos.color = Color.cyan;
                 //Gizmos.DrawLine(list[x].transform.position, list[x].transform.position+dist);
                 midPoints.Add(midPoint);
@@ -60,6 +61,7 @@ public class bezierGenerator : MonoBehaviour
                 lineRender.SetPosition(x, midPoints[x].transform.position);
             }
             //estimateCurve(midPoints);
+            estimateCurve(midPoints);
             //Debug.Log($"New Array size: {midPoints.Count}");
             return GenerateCurve(midPoints);
         }
@@ -69,14 +71,14 @@ public class bezierGenerator : MonoBehaviour
     void estimateCurve(List<GameObject> list)
     {
         int y = 1;
-        for (int x = 0; x < list.Count - 2; x++)
+        for (float t = 0; t < 1; t += resolution)
         {
-            for (float t = 0; t < 1; t += resolution)
+            for (int x = 0; x < list.Count - 2; x++)
             {
                 Gizmos.DrawLine(Vector3.Lerp(list[x].transform.position,
-                    list[x + y].transform.position, t),
-                    Vector3.Lerp(list[x + y].transform.position,
-                    list[x + y + 1].transform.position, t));
+                list[x + y].transform.position, t),
+                Vector3.Lerp(list[x + y].transform.position,
+                list[x + y + 1].transform.position, t));
             }
         }
     }
