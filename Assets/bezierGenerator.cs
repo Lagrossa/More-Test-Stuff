@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor;
 public class bezierGenerator : MonoBehaviour
 {
     [Range(0f, 1f)]
@@ -9,8 +9,10 @@ public class bezierGenerator : MonoBehaviour
     public Vector3 trueMid;
     public List<GameObject> points = new List<GameObject>();
     public bool on;
+    
     public GameObject folder;
-    List<GameObject> gOHolder = new List<GameObject>();  
+    List<GameObject> gOHolder = new List<GameObject>();
+    public LineRenderer lineRender;
     private void OnDrawGizmos()
     {
         if (on)
@@ -19,13 +21,13 @@ public class bezierGenerator : MonoBehaviour
         }
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(trueMid, 0.25f);
-
     
     }
 
     Vector3 GenerateCurve(List<GameObject> list)
     {
         List<GameObject> midPoints = new List<GameObject>();
+        estimateCurve(list);
         if (list.Count <= 1)
         {
             trueMid = list[0].transform.position;
@@ -52,10 +54,27 @@ public class bezierGenerator : MonoBehaviour
                 gOHolder.Add(midPoint);
                 midPoint.transform.SetParent(folder.transform);
                 Gizmos.DrawSphere(midPoint.transform.position, .15f);
+                lineRender.positionCount = midPoints.Count;
+                lineRender.SetPosition(x, midPoints[x].transform.position);
             }
             //Debug.Log($"New Array size: {midPoints.Count}");
             return GenerateCurve(midPoints);
         }
        
+    }
+
+    void estimateCurve(List<GameObject> list)
+    {
+        for (int x = 0; x < list.Count - 2; x++)
+        {
+            for (float t = 0; t < 1; t += .1f)
+            {
+                Gizmos.DrawLine(Vector3.Lerp(list[x + 1].transform.position,
+                    list[x].transform.position,t),
+                    Vector3.Lerp(list[x + 2].transform.position,
+                    list[x+1].transform.position,t));
+
+            }
+        }
     }
 }
