@@ -52,7 +52,6 @@ public class bezierGenerator : MonoBehaviour
                 estimateCurve(list);
                 Gizmos.color = Color.cyan;
                 //Gizmos.DrawLine(list[x].transform.position, list[x].transform.position+dist);
-                Gizmos.DrawLine(midPoint.transform.position, trueMid);
                 midPoints.Add(midPoint);
                 gOHolder.Add(midPoint);
                 midPoint.transform.SetParent(folder.transform);
