@@ -9,7 +9,12 @@ public class bezierGenerator : MonoBehaviour
     public Vector3 trueMid;
     public List<GameObject> points = new List<GameObject>();
     public bool on;
-    
+
+    //Animation Fields
+    public bool animating;
+    public bool alternateUp;
+    public float lerpSpeed;
+
     public GameObject folder;
     List<GameObject> gOHolder = new List<GameObject>();
     public LineRenderer lineRender;
@@ -21,10 +26,22 @@ public class bezierGenerator : MonoBehaviour
         if (on)
         {
             GenerateCurve(points);
+            if (animating)
+            {
+                if (lerp >= 1-lerpSpeed || lerp <= 0+ lerpSpeed)
+                {
+                    alternateUp = !alternateUp;
+                }
+
+                lerp = alternateUp ? lerp + lerpSpeed : lerp - lerpSpeed;
+                
+            }
         }
+
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(trueMid, 0.25f);
-    
+
+        Gizmos.color = Color.green;
     }
         
     Vector3 GenerateCurve(List<GameObject> list)
