@@ -13,6 +13,7 @@ public class bezierGenerator : MonoBehaviour
     public GameObject folder;
     List<GameObject> gOHolder = new List<GameObject>();
     public LineRenderer lineRender;
+    public float resolution = .05f;
     private void OnDrawGizmos()
     {
         if (on)
@@ -67,13 +68,15 @@ public class bezierGenerator : MonoBehaviour
     {
         for (int x = 0; x < list.Count - 2; x++)
         {
-            for (float t = 0; t < 1; t += .05f)
+            for (float t = 0; t < 1; t += resolution)
             {
-                Gizmos.DrawLine(Vector3.Lerp(list[x + 1].transform.position,
-                    list[x].transform.position,t),
-                    Vector3.Lerp(list[x + 2].transform.position,
-                    list[x+1].transform.position,t));
-
+                for(int y = 1; x+y < list.Count-1; y++)
+                {
+                    Gizmos.DrawLine(Vector3.Lerp(list[x].transform.position,
+                    list[x + y].transform.position, t),
+                    Vector3.Lerp(list[x + 1].transform.position,
+                    list[x + y+1].transform.position, t));
+                }
             }
         }
     }
