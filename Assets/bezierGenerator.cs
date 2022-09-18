@@ -19,6 +19,8 @@ public class bezierGenerator : MonoBehaviour
         }
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(trueMid, 0.25f);
+
+    
     }
     // Start is called before the first frame update
     void Start()
@@ -52,10 +54,9 @@ public class bezierGenerator : MonoBehaviour
             {
                 Gizmos.color = Color.white;
                 Gizmos.DrawLine(points[x].transform.position, points[x + 1].transform.position);
-                Vector3 dist = list[x].transform.position +
-                    (list[x + 1].transform.position - list[x].transform.position);
+                Vector3 dist = (list[x + 1].transform.position - list[x].transform.position);
                 GameObject midPoint = new GameObject();
-                midPoint.transform.position = dist * lerp;
+                midPoint.transform.position = list[x].transform.position + dist * lerp;
                 Gizmos.color = Color.cyan;
                 Gizmos.DrawLine(list[x].transform.position, list[x].transform.position+dist);
                 midPoints.Add(midPoint);
