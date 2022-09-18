@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class bezierGenerator : MonoBehaviour
 {
+    [Range(0f, 1f)]
+    public float lerp;
     public Vector3 trueMid;
     public List<GameObject> points = new List<GameObject>();
     public bool on;
     public GameObject folder;
-    List<GameObject> gOHolder = new List<GameObject>();
-    [Range(0,1)]
-    public float lerp;
+    List<GameObject> gOHolder = new List<GameObject>();  
     private void OnDrawGizmos()
     {
         if (on)
@@ -21,17 +21,6 @@ public class bezierGenerator : MonoBehaviour
         Gizmos.DrawSphere(trueMid, 0.25f);
 
     
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     Vector3 GenerateCurve(List<GameObject> list)
