@@ -213,7 +213,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -1.5923264, y: 7.261277, z: 0.01359207}
+  - {x: 0.49467325, y: 7.678212, z: 0.01359207}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -574,11 +574,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerp: 0.521
-  trueMid: {x: -1.5923264, y: 7.261277, z: 0.01359207}
+  trueMid: {x: 0.49467325, y: 7.678212, z: 0.01359207}
   points:
   - {fileID: 293681362}
   - {fileID: 85783724}
   - {fileID: 1577180005}
+  - {fileID: 853402534}
   - {fileID: 853402534}
   on: 1
   folder: {fileID: 1014696468}
