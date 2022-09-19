@@ -13,6 +13,7 @@ public class bezierGenerator : MonoBehaviour
     //Animation Fields
     public bool animating;
     public bool alternateUp;
+    [Range(0f,1.0f)]
     public float lerpSpeed;
 
     public GameObject folder;
@@ -76,6 +77,7 @@ public class bezierGenerator : MonoBehaviour
                 Gizmos.DrawSphere(midPoint.transform.position, .15f);
                 lineRender.positionCount = midPoints.Count;
                 lineRender.SetPosition(x, midPoints[x].transform.position);
+                
             }
             //estimateCurve(midPoints);
             estimateCurve(midPoints);
