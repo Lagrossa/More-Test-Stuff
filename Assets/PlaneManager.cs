@@ -26,7 +26,9 @@ public class PlaneManager : MonoBehaviour
             {
                 for (int y = 0; y < setMaxCol; y++)
                 {
-                    GameObject.DestroyImmediate(tileSet[x, y]);
+                    Transform.DestroyImmediate(folder);
+                    folder = new GameObject();
+                    //GameObject.DestroyImmediate(tileSet[x, y]);
                 }
             }
         }
@@ -45,7 +47,6 @@ public class PlaneManager : MonoBehaviour
         {
             for(int y = 0; y < setMaxCol; y++)
             {
-                Debug.Log("Added tile to array");
                 GameObject thisTile = GameObject.Instantiate(tile);
                 thisTile.transform.position = new Vector3(x * PlaneNormalizer.planeSize, 0, y * PlaneNormalizer.planeSize);
                 GameObject.DestroyImmediate(tileSet[x, y]);

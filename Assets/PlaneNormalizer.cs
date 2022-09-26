@@ -42,12 +42,16 @@ public class PlaneNormalizer : MonoBehaviour
             Gizmos.color = Color.red;
             Vector3 planeLength = Vector3.right * planeSize;
             Gizmos.DrawLine(plane.transform.position, planeLength + plane.transform.position);
+            //Negative (Could alternatively just draw from (-l to +l but...)
+            Gizmos.DrawLine(plane.transform.position, -planeLength + plane.transform.position);
             Handles.Label(new Vector3(planeLength.x / 2, planeLength.y, planeLength.z) + plane.transform.position,
                 planeSize + "m long");
             // z Axis
             Gizmos.color = Color.blue;
             Vector3 planeWidth = Vector3.forward * planeSize;
             Gizmos.DrawLine(plane.transform.position, planeWidth + plane.transform.position);
+            //Negative
+            Gizmos.DrawLine(plane.transform.position, -planeWidth + plane.transform.position);
             Handles.Label(new Vector3(planeWidth.x, planeWidth.y, planeWidth.z / 2) + plane.transform.position,
                 planeSize + "m wide");
 
