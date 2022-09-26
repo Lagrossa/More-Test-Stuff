@@ -19,7 +19,7 @@ public class PlaneNormalizer : MonoBehaviour
     public int node3;
     public int node4;
 
-    public float nodeRadius = .5f;
+    public float nodeRadius = .1f;
     private void OnDrawGizmos()
     {
         //normalize to plane size
@@ -48,14 +48,25 @@ public class PlaneNormalizer : MonoBehaviour
                 planeSize + "m wide");
 
             //Connection Nodes
-            Vector3 nodeV1; //+w,
-            Vector3 nodeV2;
-            Vector3 nodeV3;
-            Vector3 nodeV4;
+            Vector3 nodeV1 = planeWidth + plane.transform.position; //+w,
+            Vector3 nodeV2 = planeLength + plane.transform.position;//+l,
+            Vector3 nodeV3 = -(planeWidth + plane.transform.position); //-w
+            Vector3 nodeV4 = -(planeLength + plane.transform.position); //-l
 
             // Node 1
-            Gizmos.DrawSphere(planeWidth+plane.transform.position, nodeRadius);
+            Gizmos.color = NodeToColor(node1);
+            Gizmos.DrawSphere(nodeV1, nodeRadius);
+            // Node 1
+            Gizmos.color = NodeToColor(node1);
+            Gizmos.DrawSphere(nodeV1, nodeRadius);
         }
     }
 
+    Color NodeToColor(int nodeNum) => nodeNum switch
+    {
+        0 => Color.red,
+        1 => Color.green,
+        2 => Color.blue,
+        _ => Color.grey,
+    };
 }
