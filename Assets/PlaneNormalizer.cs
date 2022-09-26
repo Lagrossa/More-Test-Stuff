@@ -10,9 +10,11 @@ public class PlaneNormalizer : MonoBehaviour
     [Header("Keep at 5 unless Lain or Louanne tell you otherwise.")]
     public float planeSize = 5f;
 
+    float basePlane = 5f; // L/W/H of a plane in its 'raw' unedited form.
     private void OnDrawGizmos()
     {
-        plane.transform.localScale = new Vector3(planeSize, planeSize, planeSize);
+        //normalize to planesize
+        plane.transform.localScale = new Vector3(planeSize/ basePlane, planeSize/ basePlane, planeSize/ basePlane);
 
         //Plane visualizations
         // y Axis
@@ -23,15 +25,15 @@ public class PlaneNormalizer : MonoBehaviour
             planeSize + "m tall");
         // x Axis
         Gizmos.color = Color.red;
-        Vector3 planeLength = Vector3.right * planeSize + plane.transform.position;
-        Gizmos.DrawLine(plane.transform.position, planeLength);
-        Handles.Label(new Vector3(planeLength.x/2, planeLength.y, planeLength.z),
+        Vector3 planeLength = Vector3.right * planeSize;
+        Gizmos.DrawLine(plane.transform.position, planeLength + plane.transform.position);
+        Handles.Label(new Vector3(planeLength.x/2, planeLength.y, planeLength.z) + plane.transform.position,
             planeSize + "m long");
         // z Axis
         Gizmos.color = Color.blue;
-        Vector3 planeWidth = Vector3.forward * planeSize + plane.transform.position;
-        Gizmos.DrawLine(plane.transform.position, planeWidth);
-        Handles.Label(new Vector3(planeWidth.x / 2, planeWidth.y, planeWidth.z),
+        Vector3 planeWidth = Vector3.forward * planeSize;
+        Gizmos.DrawLine(plane.transform.position, planeWidth + plane.transform.position);
+        Handles.Label(new Vector3(planeWidth.x/2, planeWidth.y, planeWidth.z/2) + plane.transform.position,
             planeSize + "m wide");
     }
 
