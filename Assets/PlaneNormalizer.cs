@@ -15,13 +15,24 @@ public class PlaneNormalizer : MonoBehaviour
         plane.transform.localScale = new Vector3(planeSize, planeSize, planeSize);
 
         //Plane visualizations
+        // y Axis
         Gizmos.color = Color.green;
-        Vector3 planeHeight = (Vector3.up * planeSize + plane.transform.position);
+        Vector3 planeHeight = Vector3.up * planeSize + plane.transform.position;
         Gizmos.DrawLine(plane.transform.position, planeHeight);
-        Handles.color = Color.green;
         Handles.Label(new Vector3(planeHeight.x, planeHeight.y/2, planeHeight.z),
             planeSize + "m tall");
-        Handles.color = Color.blue;
+        // x Axis
+        Gizmos.color = Color.red;
+        Vector3 planeLength = Vector3.right * planeSize + plane.transform.position;
+        Gizmos.DrawLine(plane.transform.position, planeLength);
+        Handles.Label(new Vector3(planeLength.x/2, planeLength.y, planeLength.z),
+            planeSize + "m long");
+        // z Axis
+        Gizmos.color = Color.blue;
+        Vector3 planeWidth = Vector3.forward * planeSize + plane.transform.position;
+        Gizmos.DrawLine(plane.transform.position, planeWidth);
+        Handles.Label(new Vector3(planeWidth.x / 2, planeWidth.y, planeWidth.z),
+            planeSize + "m wide");
     }
 
 }
