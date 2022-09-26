@@ -1,0 +1,59 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+public class PlaneManager : MonoBehaviour
+{
+    [Range(0,20)]
+    public int setMaxRow;
+    public static int maxRow = 5;
+    [Range(0, 20)]
+    public int setMaxCol;
+    public static int maxCol = 5;
+    [SerializeField]
+    public GameObject[,] tileSet = new GameObject[maxRow,maxCol];
+    public GameObject tile;
+    public bool building;
+    public GameObject folder;
+
+    public bool reset;
+    void OnDrawGizmos()
+    {
+        if (reset)
+        {
+            tileSet = new GameObject[maxRow, maxCol];
+            for (int x = 0; x < setMaxRow; x++)
+            {
+                for (int y = 0; y < setMaxCol; y++)
+                {
+                    GameObject.DestroyImmediate(tileSet[x, y]);
+                }
+            }
+        }
+
+
+        //Populate Array while building
+        if (!building)
+        {
+            return;
+        }
+
+        maxRow = setMaxRow;
+        maxCol = setMaxCol;
+        tileSet = new GameObject[maxRow, maxCol];
+        for (int x = 0; x < setMaxRow; x++)
+        {
+            for(int y = 0; y < setMaxCol; y++)
+            {
+                Debug.Log("Added tile to array");
+                GameObject thisTile = GameObject.Instantiate(tile);
+                thisTile.transform.position = new Vector3(x * PlaneNormalizer.planeSize, 0, y * PlaneNormalizer.planeSize);
+                GameObject.DestroyImmediate(tileSet[x, y]);
+                tileSet[x, y] = thisTile;
+                thisTile.transform.SetParent(folder.transform);
+            }
+        }
+
+
+    }
+}

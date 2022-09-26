@@ -8,7 +8,7 @@ public class PlaneNormalizer : MonoBehaviour
     [Tooltip("This is your 'base' that you will be building on top of.")]
     public GameObject plane;
     [Header("Keep at 5 unless Lain or Louanne tell you otherwise.")]
-    public float planeSize = 5f;
+    public static float planeSize = 5f;
     [Header("On if you want visual guides on. Off if not.")]
     public bool visualGuides;
     const float basePlane = 5f; // L/W/H of a plane in its 'raw' unedited form. DO NOT CHANGE.
