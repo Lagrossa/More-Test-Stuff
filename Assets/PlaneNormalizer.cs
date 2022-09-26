@@ -14,9 +14,13 @@ public class PlaneNormalizer : MonoBehaviour
     const float basePlane = 5f; // L/W/H of a plane in its 'raw' unedited form. DO NOT CHANGE.
 
     [Header("Your 'node' sequence will determine where you connect. Enter exactly.")]
+    [Range(0,2)]
     public int node1;
+    [Range(0, 2)]
     public int node2;
+    [Range(0, 2)]
     public int node3;
+    [Range(0, 2)]
     public int node4;
 
     public float nodeRadius = .1f;
@@ -50,15 +54,21 @@ public class PlaneNormalizer : MonoBehaviour
             //Connection Nodes
             Vector3 nodeV1 = planeWidth + plane.transform.position; //+w,
             Vector3 nodeV2 = planeLength + plane.transform.position;//+l,
-            Vector3 nodeV3 = -(planeWidth + plane.transform.position); //-w
-            Vector3 nodeV4 = -(planeLength + plane.transform.position); //-l
+            Vector3 nodeV3 = (-planeWidth + plane.transform.position); //-w
+            Vector3 nodeV4 = (-planeLength + plane.transform.position); //-l
 
             // Node 1
             Gizmos.color = NodeToColor(node1);
             Gizmos.DrawSphere(nodeV1, nodeRadius);
-            // Node 1
-            Gizmos.color = NodeToColor(node1);
-            Gizmos.DrawSphere(nodeV1, nodeRadius);
+            // Node 2
+            Gizmos.color = NodeToColor(node2);
+            Gizmos.DrawSphere(nodeV2, nodeRadius);
+            // Node 3
+            Gizmos.color = NodeToColor(node3);
+            Gizmos.DrawSphere(nodeV3, nodeRadius);
+            // Node 4
+            Gizmos.color = NodeToColor(node4);
+            Gizmos.DrawSphere(nodeV4, nodeRadius);
         }
     }
 
@@ -67,6 +77,6 @@ public class PlaneNormalizer : MonoBehaviour
         0 => Color.red,
         1 => Color.green,
         2 => Color.blue,
-        _ => Color.grey,
+        _ => Color.grey, //Literally, how do you do this. Like if it is EVER grey you fucked up so badly :(
     };
 }
