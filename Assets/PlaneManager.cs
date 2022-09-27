@@ -24,7 +24,6 @@ public class PlaneManager : MonoBehaviour
             tileSet = new GameObject[maxRow, maxCol];
             Transform.DestroyImmediate(folder);
             folder = new GameObject();
-           
         }
 
 
@@ -33,7 +32,7 @@ public class PlaneManager : MonoBehaviour
         {
             return;
         }
-
+        reset = true;
         maxRow = setMaxRow;
         maxCol = setMaxCol;
         tileSet = new GameObject[maxRow, maxCol];
@@ -48,7 +47,7 @@ public class PlaneManager : MonoBehaviour
                 thisTile.transform.SetParent(folder.transform);
             }
         }
-
+        reset = false;
 
     }
 }
