@@ -16,7 +16,7 @@ public class PlaneManager : MonoBehaviour
     public bool building;
     public GameObject folder;
 
-    public bool reset;
+    bool reset;
     void OnDrawGizmos()
     {
         if (reset)
@@ -24,6 +24,7 @@ public class PlaneManager : MonoBehaviour
             tileSet = new GameObject[maxRow, maxCol];
             Transform.DestroyImmediate(folder);
             folder = new GameObject();
+            reset = false;
         }
 
 
@@ -32,7 +33,6 @@ public class PlaneManager : MonoBehaviour
         {
             return;
         }
-        reset = true;
         maxRow = setMaxRow;
         maxCol = setMaxCol;
         tileSet = new GameObject[maxRow, maxCol];
@@ -40,6 +40,7 @@ public class PlaneManager : MonoBehaviour
         {
             for(int y = 0; y < setMaxCol; y++)
             {
+                reset = true;
                 GameObject thisTile = GameObject.Instantiate(tile);
                 thisTile.transform.position = new Vector3(2*x * PlaneNormalizer.planeSize, 0, 2*y * PlaneNormalizer.planeSize);
                 GameObject.DestroyImmediate(tileSet[x, y]);
@@ -47,7 +48,6 @@ public class PlaneManager : MonoBehaviour
                 thisTile.transform.SetParent(folder.transform);
             }
         }
-        reset = false;
 
     }
 }
