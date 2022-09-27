@@ -81,6 +81,6 @@ public class PlaneNormalizer : MonoBehaviour
         0 => Color.red,
         1 => Color.green,
         2 => Color.blue,
-        _ => Color.grey, //Literally, how do you do this. Like if it is EVER grey you fucked up so badly :(
+        _ => Color.grey, //Literally, how do you do this? Like if it is EVER grey you fucked up so badly :(
     };
 }

@@ -22,15 +22,9 @@ public class PlaneManager : MonoBehaviour
         if (reset)
         {
             tileSet = new GameObject[maxRow, maxCol];
-            for (int x = 0; x < setMaxRow; x++)
-            {
-                for (int y = 0; y < setMaxCol; y++)
-                {
-                    Transform.DestroyImmediate(folder);
-                    folder = new GameObject();
-                    //GameObject.DestroyImmediate(tileSet[x, y]);
-                }
-            }
+            Transform.DestroyImmediate(folder);
+            folder = new GameObject();
+           
         }
 
 
@@ -48,7 +42,7 @@ public class PlaneManager : MonoBehaviour
             for(int y = 0; y < setMaxCol; y++)
             {
                 GameObject thisTile = GameObject.Instantiate(tile);
-                thisTile.transform.position = new Vector3(x * PlaneNormalizer.planeSize, 0, y * PlaneNormalizer.planeSize);
+                thisTile.transform.position = new Vector3(2*x * PlaneNormalizer.planeSize, 0, 2*y * PlaneNormalizer.planeSize);
                 GameObject.DestroyImmediate(tileSet[x, y]);
                 tileSet[x, y] = thisTile;
                 thisTile.transform.SetParent(folder.transform);
