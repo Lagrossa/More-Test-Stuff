@@ -4,10 +4,10 @@ using UnityEngine;
 using System;
 public class PlaneManager : MonoBehaviour
 {
-    [Range(0,20)]
+    [Range(0,200)]
     public int setMaxRow;
     public static int maxRow = 5;
-    [Range(0, 20)]
+    [Range(0, 200)]
     public int setMaxCol;
     public static int maxCol = 5;
     [SerializeField]
