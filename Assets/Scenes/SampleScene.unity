@@ -465,8 +465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6786392c0f05c4792965a305b19df6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setMaxRow: 0
-  setMaxCol: 4
+  setMaxRow: 1
+  setMaxCol: 1
   tile: {fileID: 1402454909657780060, guid: fb16a94ca15e845bb9b0366c21254a57, type: 3}
   building: 0
   folder: {fileID: 1187815560}
