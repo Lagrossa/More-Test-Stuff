@@ -58,8 +58,8 @@ public class PlaneNormalizer : MonoBehaviour
                 planeSize + "m wide");
 
             //Array Count
-            Gizmos.color = Color.cyan;
-            Handles.Label(new Vector3(planeWidth.x/2, planeWidth.y, planeWidth.z / 2) + plane.transform.position,
+            Handles.color = Color.cyan;
+            Handles.Label(new Vector3(planeWidth.x/2, planeWidth.y, planeWidth.z/2) + plane.transform.position,
                 positionInArray.ToString());
 
             //Connection Nodes

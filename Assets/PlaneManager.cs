@@ -42,6 +42,7 @@ public class PlaneManager : MonoBehaviour
             {
                 reset = true;
                 GameObject thisTile = GameObject.Instantiate(tile);
+                thisTile.GetComponent<PlaneNormalizer>().positionInArray = x * y;
                 thisTile.transform.position = new Vector3(2*x * PlaneNormalizer.planeSize, 0, 2*y * PlaneNormalizer.planeSize);
                 GameObject.DestroyImmediate(tileSet[x, y]);
                 tileSet[x, y] = thisTile;
