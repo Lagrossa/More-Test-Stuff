@@ -23,6 +23,8 @@ public class PlaneNormalizer : MonoBehaviour
     [Range(0, 2)]
     public int node4;
 
+    public int positionInArray = 1;
+
     public float nodeRadius = .1f;
     private void OnDrawGizmos()
     {
@@ -54,6 +56,11 @@ public class PlaneNormalizer : MonoBehaviour
             Gizmos.DrawLine(plane.transform.position, -planeWidth + plane.transform.position);
             Handles.Label(new Vector3(planeWidth.x, planeWidth.y, planeWidth.z / 2) + plane.transform.position,
                 planeSize + "m wide");
+
+            //Array Count
+            Gizmos.color = Color.cyan;
+            Handles.Label(new Vector3(planeWidth.x/2, planeWidth.y, planeWidth.z / 2) + plane.transform.position,
+                positionInArray.ToString());
 
             //Connection Nodes
             Vector3 nodeV1 = planeWidth + plane.transform.position; //+w,
