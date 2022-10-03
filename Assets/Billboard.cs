@@ -16,9 +16,10 @@ public class Billboard : MonoBehaviour
 
         Quaternion rot = Quaternion.LookRotation(dirToObject.normalized);
 
-        //Lock X-Degree & Z Rotation
+        //Lock X-Degree & Z-Degree Rotation
         rot.x = 0;
         rot.z = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, rotSpeed * Time.deltaTime);
+        Canvas.ForceUpdateCanvases();
     }
 }
