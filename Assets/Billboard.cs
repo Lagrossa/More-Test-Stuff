@@ -17,5 +17,7 @@ public class Billboard : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position, dirToObject + transform.position);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, LookAtObj.position);
     }
 }
