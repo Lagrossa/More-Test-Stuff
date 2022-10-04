@@ -6,9 +6,7 @@ public class Billboard : MonoBehaviour
 {
     public Transform LookAtObj;
     Vector3 dirToObject;
-    void Update()
-    {
-    }
+    float rotSpeed;
 
     private void OnDrawGizmos()
     {
@@ -19,6 +17,6 @@ public class Billboard : MonoBehaviour
         Gizmos.color = Color.red;
         //Gizmos.DrawLine(transform.position, LookAtObj.position);
         Quaternion rot = Quaternion.LookRotation(dirToObject);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1 * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rot, rotSpeed * Time.deltaTime);
     }
 }
