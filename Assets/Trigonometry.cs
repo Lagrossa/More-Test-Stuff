@@ -24,7 +24,8 @@ public class Trigonometry : MonoBehaviour
             //if (Mathf.Abs(zVal) > 1)
             //    zVal /= zVal;
             Vector3 point = new Vector3(xVal, 0, yVal);
-            if (Vector3.Dot(trigger.transform.position.normalized, point.normalized) > leniency)
+            if (Vector3.Dot(trigger.transform.position.normalized, point.normalized) > leniency &&
+                (trigger.transform.position - transform.position).magnitude < radius)
             {
                 Gizmos.color = Color.cyan;
             }
