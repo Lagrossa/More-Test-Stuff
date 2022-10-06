@@ -13,6 +13,9 @@ public class RayCast : MonoBehaviour
 
         if (Physics.Raycast(busby, out hitInfo, 100f)){
             Debug.DrawLine(transform.position, hitInfo.point, Color.red);
+            //Riccochet
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(hitInfo.point, Quaternion.FromToRotation(busby.direction, hitInfo.normal) * new Vector3(1,1,1));
         }
         else
         {
