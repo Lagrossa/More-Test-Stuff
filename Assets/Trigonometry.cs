@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Trigonometry : MonoBehaviour
 {
-    const float TAU = 6.28f;
+    public GameObject trigger;
+    public float TAU = 6.28f; // Divide by X to mimic Unit Circle
     public int dots = 16;
     public float radius = 1;
     public float z;
+    public float leniency;
     void OnDrawGizmos()
     {
         for(int x = 0; x < dots; x++)
@@ -21,9 +23,15 @@ public class Trigonometry : MonoBehaviour
             //float zVal = Mathf.Tan(angRadians);
             //if (Mathf.Abs(zVal) > 1)
             //    zVal /= zVal;
-
-            Gizmos.color = Color.cyan;
-            Vector3 point = new Vector3(xVal, yVal, z);
+            Vector3 point = new Vector3(xVal, 0, yVal);
+            if (Vector3.Dot(trigger.transform.position.normalized, point.normalized) > leniency)
+            {
+                Gizmos.color = Color.cyan;
+            }
+            else
+            {
+                Gizmos.color = Color.red;
+            }
             //Gizmos.DrawSphere(point, radius);
             Gizmos.DrawLine(transform.position, point);
 
