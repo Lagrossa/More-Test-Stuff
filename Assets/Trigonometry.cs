@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Trigonometry : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class Trigonometry : MonoBehaviour
     public int dots = 16;
     public float radius = 1;
     public float z;
-    public float leniency;
+    [Range(0,360)]
+    public float angThreshold;
     void OnDrawGizmos()
     {
         for(int x = 0; x < dots; x++)
@@ -24,8 +26,8 @@ public class Trigonometry : MonoBehaviour
             //if (Mathf.Abs(zVal) > 1)
             //    zVal /= zVal;
             Vector3 point = new Vector3(xVal, 0, yVal);
-            if (Vector3.Dot(trigger.transform.position.normalized, point.normalized) > leniency &&
-                (trigger.transform.position - transform.position).magnitude < radius)
+            Handles.DrawWireArc(transform.position, Vector3.forward, (transform.position- trigger.transform.position).normalized, angThreshold, radius);
+            if (angRadians < Mathf.Deg2Rad * angThreshold)
             {
                 Gizmos.color = Color.cyan;
             }
