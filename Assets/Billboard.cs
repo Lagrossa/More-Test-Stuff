@@ -36,7 +36,8 @@ public class Billboard : MonoBehaviour
         //dotOfVectors = Vector3.Dot(dirToObject.normalized, transform.parent.up);
         //if (Mathf.Abs(dotOfVectors) >= .5)
         //{
-            transform.rotation = Quaternion.Slerp(transform.rotation, rot, rotSpeed * Time.deltaTime);
+            Quaternion q = Quaternion.Slerp(Quaternion.LookRotation(transform.parent.up), Quaternion.LookRotation(transform.parent.forward), dotOfVectors);
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, rotSpeed * Time.deltaTime);
         //}
         //else
         //{
