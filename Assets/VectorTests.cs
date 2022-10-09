@@ -9,8 +9,9 @@ public class VectorTests : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        float xVal = Mathf.Cos(angleDeg);
-        float yVal = Mathf.Sin(angleDeg);
+        float radAng = angleDeg * Mathf.Deg2Rad;
+        float xVal = Mathf.Cos(radAng);
+        float yVal = Mathf.Sin(radAng);
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(xVal, yVal, 0));
         Gizmos.color = Color.red;
