@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class VectorTests : MonoBehaviour
 {
-    public float angleDeg;
+    [Range(0,360)]
+    public int angleDeg;
 
     void OnDrawGizmos()
     {
