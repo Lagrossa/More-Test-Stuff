@@ -13,9 +13,10 @@ public class VectorTests : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(xVal, yVal, 0));
         Gizmos.color = Color.red;
-
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(-xVal, yVal, 0));
         Gizmos.color = Color.green;
-
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(-xVal, -yVal, 0));
         Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(xVal, -yVal, 0));
     }
 }
