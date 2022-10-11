@@ -11,6 +11,7 @@ public class Trigonometry : MonoBehaviour
     public float radius = 1;
     public float thickness = 1f;
     public float z;
+    public float dotProduct;
     [Range(0,360)]
     public float angThreshold;
     void OnDrawGizmos()
@@ -41,8 +42,8 @@ public class Trigonometry : MonoBehaviour
 
 
             //Draw to sphere color determined by dotproduct
-            float dotProduct = Vector3.Dot(transform.position, triggerTransform);
-            Gizmos.color = (dotProduct == 1 ? Color.green : Color.red);
+            dotProduct = Vector3.Dot(transform.right, triggerTransform-transform.position);
+            Gizmos.color = new Color(1-dotProduct, dotProduct, 0);
             Gizmos.DrawLine(transform.position, transform.position + triggerTransform);
 
         }
