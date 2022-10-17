@@ -18,7 +18,7 @@ public class Trigonometry : MonoBehaviour
     {
         for(int x = 0; x < dots; x++)
         {
-            float t = x / (float)dots +;
+            float t = x / (float)dots;
             float angRadians = TAU * t;
             float xVal = Mathf.Cos(angRadians);
             float yVal = Mathf.Sin(angRadians);
