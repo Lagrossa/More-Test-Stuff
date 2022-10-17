@@ -27,7 +27,6 @@ public class Trigonometry : MonoBehaviour
             Handles.DrawWireArc(transform.position, Vector3.up, (triggerTransform - transform.position).normalized, -angThreshold, radius, thickness); ;
 
             Gizmos.color = angRadians < Mathf.Deg2Rad * angThreshold ? Color.cyan : Color.red;
-            //Gizmos.DrawSphere(point, radius);
             Gizmos.DrawLine(transform.position, point);
 
 
