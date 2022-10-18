@@ -516,8 +516,8 @@ MonoBehaviour:
   radius: 1
   thickness: 2.28
   z: 0
-  dotProduct: 4.27
-  angThreshold: 56
+  dotProduct: 0.77
+  angThreshold: 138
 --- !u!4 &435962797
 Transform:
   m_ObjectHideFlags: 0
@@ -1272,7 +1272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956822754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.27, y: 0, z: 0.03}
+  m_LocalPosition: {x: 0.77, y: 0, z: 2.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
