@@ -6,6 +6,8 @@ public class CompetencyTest : MonoBehaviour
 {
     private void OnDrawGizmos()
     {
-        
-    }
+        for(int x = 0; x < dots; x++)
+        {
+
+        }
 }
