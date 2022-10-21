@@ -28,7 +28,7 @@ public class Trigonometry : MonoBehaviour
 
             Gizmos.color = angRadians < Mathf.Deg2Rad * angThreshold ? Color.cyan : Color.red;
             Gizmos.DrawLine(transform.position, point);
-           /
+           //
 
             //Draw to sphere color determined by dotproduct
             dotProduct = Vector3.Dot(transform.right, triggerTransform-transform.position);
