@@ -13,5 +13,6 @@ public class CompetencyTest : MonoBehaviour
             float percentCircumference = (float)x / dots;
             float degRad = percentCircumference * TAU;
             Vector3 point = new Vector3(Mathf.Cos(degRad), Mathf.Sin(degRad), 0);
+            Gizmos.Draw
         }
 }
