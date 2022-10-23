@@ -24,7 +24,7 @@ public class Trigonometry : MonoBehaviour
             float yVal = Mathf.Sin(angRadians);
             Vector3 triggerTransform = trigger.transform.position;
             Vector3 point = new Vector3(xVal, 0, yVal);
-            Handles.DrawWireArc(transform.position, Vector3.up, (triggerTransform - transform.position).normalized, -angThreshold, radius, thickness); ;
+            Handles.DrawWireArc(transform.position, Vector3.up, (triggerTransform - transform.position).normalized, -angThreshold, radius, thickness);
 
             Gizmos.color = angRadians < Mathf.Deg2Rad * angThreshold ? Color.cyan : Color.red;
             Gizmos.DrawLine(transform.position, point);
